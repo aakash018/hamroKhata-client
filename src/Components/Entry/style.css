@@ -8,14 +8,30 @@
 }
 
 .entry-container {
-  background-color: blueviolet;
+  background-color: var(--theme-background-color);
+  border-radius: 10px;
 
-  width: 400px;
+  width: 360px;
   height: 400px;
 
   position: relative;
 }
 
-.entry-container input select {
-  display: block;
+.entry-container section label {
+  color: aliceblue;
+  font-size: 1.8rem;
+}
+
+#amount,
+#person-select,
+#desc-area {
+  width: 60%;
+  height: 40px;
+  margin: 20px;
+
+  font-family: var(--default-font);
+}
+
+#desc-area {
+  height: 70px;
 }

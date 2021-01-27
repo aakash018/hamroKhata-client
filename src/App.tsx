@@ -1,12 +1,24 @@
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
+
 import './App.css';
 import './variables.css'
-import Entry from './Components/Entry';
 import Header from "./Components/Header/index"
+import Home from "./Pages/Home"
+import Logs from "./Pages/Logs/index"
+import LogsProvider from "./Context/Logs";
+
 function App() {
   return (
     <div className="App">
+      <Router>
         <Header />
-        <Entry />
+        <Switch>
+          <LogsProvider>
+            <Route component={Home} path="/" exact/>
+            <Route component={Logs} path="/logs" exact/>
+          </LogsProvider>
+        </Switch>
+      </Router>
     </div>
   );
 }

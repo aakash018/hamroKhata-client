@@ -31,3 +31,8 @@
   color: aliceblue;
   font-size: 1.7rem;
 }
+
+.page-header ul li a {
+  text-decoration: none;
+  color: aliceblue;
+}
