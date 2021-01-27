@@ -1,0 +1,21 @@
+.entry-wraper {
+  width: 100vw;
+  height: 90.5vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.entry-container {
+  background-color: blueviolet;
+
+  width: 400px;
+  height: 400px;
+
+  position: relative;
+}
+
+.entry-container input select {
+  display: block;
+}
