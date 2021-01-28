@@ -1,5 +1,5 @@
 export interface ILogs {
-    id: string,
+    _id: string,
     amount: number,
     paid_By: string,
     description: string,

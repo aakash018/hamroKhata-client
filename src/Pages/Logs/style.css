@@ -1,0 +1,24 @@
+.logs-wraper {
+  width: 98.7vw;
+  min-height: 89vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* background-color: blueviolet; */
+}
+
+.logs-container {
+  width: 800px;
+  height: auto;
+
+  margin: 70px 0 70px 0;
+
+  border: 1px solid black;
+  position: relative;
+
+  cursor: pointer;
+
+  /* background-color: brown; */
+}

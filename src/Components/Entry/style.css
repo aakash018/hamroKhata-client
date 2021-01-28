@@ -1,10 +1,12 @@
 .entry-wraper {
   width: 100vw;
-  height: 90.5vh;
+  height: 88.9vh;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  /* background-color: brown; */
 }
 
 .entry-container {
