@@ -1,0 +1,22 @@
+.audit-card-container {
+  background-color: var(--audit-card-background);
+
+  width: 600px;
+  height: 140px;
+
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgb(65, 64, 64);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.audit-profile-picture {
+  width: 100px;
+  height: 100px;
+  margin-left: 40px;
+
+  background-color: var(--theme-font-color);
+  border-radius: 50%;
+}

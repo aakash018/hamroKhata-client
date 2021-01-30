@@ -47,5 +47,5 @@
 }
 
 .delete-icon {
-  color: rgb(219, 34, 80);
+  color: var(--theme-font-color);
 }
