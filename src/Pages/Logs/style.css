@@ -10,7 +10,7 @@
 }
 
 .logs-container {
-  width: 800px;
+  width: 900px;
   height: 400px;
 
   margin: 70px 0 70px 0;
@@ -20,9 +20,9 @@
 
   cursor: pointer;
 
-  background-color: brown;
+  /* background-color: brown; */
   overflow-y: scroll;
 }
-/* .logs-container::-webkit-scrollbar {
+.logs-container::-webkit-scrollbar {
   display: none;
-} */
+}

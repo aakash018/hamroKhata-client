@@ -3,7 +3,8 @@ export interface ILogs {
     amount: number,
     paid_By: string,
     description: string,
-    currentTime: string
+    createdAt: Date,
+    updatedAt: Date
 }
 
 export interface LogsContextTypes {
