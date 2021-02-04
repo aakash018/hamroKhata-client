@@ -21,7 +21,27 @@
 
 .entry-container section label {
   color: aliceblue;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+}
+
+.entry-container form {
+  position: absolute;
+  top: 45%;
+  left: 50px;
+  transform: translateY(-50%);
+}
+
+.entry-container button {
+  padding: 1rem 4rem 1rem 4rem;
+  font-family: var(--default-font);
+  border-radius: 2rem;
+
+  background: var(--theme-font-color);
+  color: white;
+
+  position: absolute;
+  left: 20%;
+  /* transform: translateX(-50%); */
 }
 
 #amount,
@@ -32,8 +52,17 @@
   margin: 20px;
 
   font-family: var(--default-font);
+  padding-left: 10px;
 }
 
 #desc-area {
+  width: 280px;
   height: 70px;
+  padding-top: 20px;
+  resize: none;
+  margin-left: 5px;
+}
+
+.entry-container label {
+  text-align: center;
 }

@@ -3,14 +3,15 @@ import "./style.css";
 
 interface Props {
     names: string[],
-    amounts: number[]
+    amounts: number[],
+    profile_pic: string
 }
 
-const index:React.FC<Props> = ({names, amounts}) => {
+const index:React.FC<Props> = ({names, amounts, profile_pic}) => {
     return (
         <div className="audit-card-container">
             <section className="audit-profile-picture">
-                
+                <img src={profile_pic} />
             </section>
             <section className="audit-data-container">
                 <div className="audit-data">

@@ -13,10 +13,22 @@
 }
 
 .audit-profile-picture {
+  position: relative;
+
   width: 100px;
   height: 100px;
   margin-left: 40px;
 
-  background-color: var(--theme-font-color);
+  /* background-color: var(--theme-font-color); */
   border-radius: 50%;
+  border: 2px solid var(--theme-font-color);
+
+  overflow: hidden;
+}
+
+.audit-profile-picture img {
+  width: 100%;
+  height: 100px;
+
+  object-fit: cover;
 }

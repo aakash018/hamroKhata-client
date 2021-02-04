@@ -28,5 +28,6 @@ export interface IAudit {
     Deekshit: IDeekshit,
     Subash: ISubash,
     Yaman: IYaman,
-    message: string
+    message: string,
+    profile_pics: string[]
 }

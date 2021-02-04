@@ -39,7 +39,7 @@ const Entry:React.FC = () => {
                     </section>
                     <section>
                         <label htmlFor="desc-area">Description</label>
-                        <textarea style={{resize: "none"}} id="desc-area" ref={description} required/>
+                        <textarea id="desc-area" ref={description} maxLength={120} required/>
                     </section>
                     <button type="submit">Submit</button>
                 </form>

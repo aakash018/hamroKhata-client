@@ -11,7 +11,8 @@
 
 .logs-container {
   width: 900px;
-  height: 400px;
+  min-height: auto;
+  max-height: 400px;
 
   margin: 70px 0 70px 0;
 
