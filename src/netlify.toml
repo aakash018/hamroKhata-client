@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/*"
+  to = "https://api.mysearch.com"
+  status = 200
