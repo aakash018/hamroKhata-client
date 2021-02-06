@@ -26,11 +26,11 @@ const Audit:React.FC = () => {
         useEffect(() => {
             (
                 async () => {
-                    if(audits == null){
+                    if(audits == null && process.env.REACT_APP_API_ENDPOINT){
                         console.log("Hi")
                         setLoading(true)
                         const response = await axios
-                                                .get<IAudit>("https://hamrokhatav2-server.herokuapp.com/api/audit")
+                                                .get<IAudit>(`${process.env.REACT_APP_API_ENDPOINT}/api/audit`)
                         if(setAudits){
                             // profile_pics.current = [Aakash, Deekshit, Subash, Yaman]
                             setAudits(response.data)

@@ -26,22 +26,29 @@ const Entry:React.FC<Props> = ({setShowAudied}) => {
             paid_by: paid_by.current?.value,
             description: description.current?.value
         }
-        setShowAudied(true)
-        await axios.post("https://hamrokhatav2-server.herokuapp.com/api/entry", payload)
+        try {
+                if(process.env.REACT_APP_API_ENDPOINT){
+                    setShowAudied(true)
+                    await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/api/entry`, payload)
+                        
+                    //? TO LOAD NEW AUDIT AFTER ENTRY
+                    const response = await axios
+                                        .get<IAudit>(`${process.env.REACT_APP_API_ENDPOINT}/api/audit`)
+                    if(setAudits){
+                        setAudits(response.data)
+                    }
             
-        //? TO LOAD NEW AUDIT AFTER ENTRY
-        const response = await axios
-                            .get<IAudit>("https://hamrokhatav2-server.herokuapp.com/api/audit")
-        if(setAudits){
-            setAudits(response.data)
+                    setLoading(false)
+                    setTimeout(() => {
+                        setShowAudied(false)
+                    }, 2000)
+                }
+                // clearTimeout(notifier_timer)
+
+        } catch {
+            setLoading(false)
+            console.error("Error on connecting to server")
         }
-
-
-        setLoading(false)
-        setTimeout(() => {
-            setShowAudied(false)
-        }, 2000)
-        // clearTimeout(notifier_timer)
     }
 
     return (

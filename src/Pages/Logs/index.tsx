@@ -19,14 +19,13 @@ const Logs:React.FC = () => {
     // !     INFINITY LOOP
    // !       
     const handleLogsRequest = useCallback( async () => {
-            if(sendLogRequest){
+            if(sendLogRequest && process.env.REACT_APP_API_ENDPOINT){
                 sendLogRequest.current = false
             const response = await axios
-                                    .get<ILogs[] | string>("https://hamrokhatav2-server.herokuapp.com/api/logs", 
+                                    .get<ILogs[] | string>(`${process.env.REACT_APP_API_ENDPOINT}/api/logs`, 
                                         { params: {log_position: log_request_position.current} } 
                                     )
             if(setLogs){
-                console.log(response.data)
                 if(response.data === "No Data Found"){
                     return setLoading(false)
                 }

@@ -12,7 +12,7 @@ const Home:React.FC = () => {
          bottom: "40px",
          left: "50px"
     }
-
+    console.log(process.env.REACT_APP_API_ENDPOINT)
     return (
         <>
             <div className="audit-notifer-wraper" style={audit_notifier_style}>
