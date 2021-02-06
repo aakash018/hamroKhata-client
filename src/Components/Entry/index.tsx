@@ -27,7 +27,7 @@ const Entry:React.FC<Props> = ({setShowAudied}) => {
             description: description.current?.value
         }
         setShowAudied(true)
-        await axios.post("/api/entry", payload)
+        await axios.post("https://hamrokhatav2-server.herokuapp.com/api/entry", payload)
             
         //? TO LOAD NEW AUDIT AFTER ENTRY
         const response = await axios
