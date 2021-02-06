@@ -22,7 +22,7 @@ const Logs:React.FC = () => {
             if(sendLogRequest){
                 sendLogRequest.current = false
             const response = await axios
-                                    .get<ILogs[] | string>("/api/logs", 
+                                    .get<ILogs[] | string>("https://hamrokhatav2-server.herokuapp.com/api/logs", 
                                         { params: {log_position: log_request_position.current} } 
                                     )
             if(setLogs){

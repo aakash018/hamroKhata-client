@@ -31,7 +31,7 @@ const Entry:React.FC<Props> = ({setShowAudied}) => {
             
         //? TO LOAD NEW AUDIT AFTER ENTRY
         const response = await axios
-                            .get<IAudit>("/api/audit")
+                            .get<IAudit>("https://hamrokhatav2-server.herokuapp.com/api/audit")
         if(setAudits){
             setAudits(response.data)
         }

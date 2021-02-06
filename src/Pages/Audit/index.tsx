@@ -30,7 +30,7 @@ const Audit:React.FC = () => {
                         console.log("Hi")
                         setLoading(true)
                         const response = await axios
-                                                .get<IAudit>("/api/audit")
+                                                .get<IAudit>("https://hamrokhatav2-server.herokuapp.com/api/audit")
                         if(setAudits){
                             // profile_pics.current = [Aakash, Deekshit, Subash, Yaman]
                             setAudits(response.data)
