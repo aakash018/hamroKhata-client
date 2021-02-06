@@ -11,7 +11,7 @@ const index:React.FC<Props> = ({names, amounts, profile_pic}) => {
     return (
         <div className="audit-card-container">
             <section className="audit-profile-picture">
-                <img src={profile_pic} />
+                <img src={profile_pic} alt={"profile_pic"}/>
             </section>
             <section className="audit-data-container">
                 <div className="audit-data">

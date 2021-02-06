@@ -1,6 +1,6 @@
 import "./style.css";
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AuditCard from "../../Components/AuditCard/index"
 import { IAudit } from "../../@types/audit";
 import axios from "axios";

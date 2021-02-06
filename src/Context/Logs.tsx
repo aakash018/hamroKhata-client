@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from "react"
 import { IAudit } from "../@types/audit"
 import { ILogs , LogsContextTypes } from "../@types/logs"
 
-import Aakash from "../images/Aakash.png";
+import Aakash from "../images/Aakash.jpg";
 import Deekshit from "../images/dick.jpg";
 import Subash from "../images/Subbs.jpg";
 import Yaman from "../images/Yaman.jpg";

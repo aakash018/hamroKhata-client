@@ -1,0 +1,49 @@
+.audited-notifier {
+  width: 150px;
+  height: 50px;
+  border-radius: 3rem;
+
+  background-color: var(--theme-font-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border: 2px solid var(--theme-background-color);
+}
+
+.audited-notifier .notifier-logo {
+  width: 31%;
+  height: 90%;
+  border-radius: 50%;
+  border: 4px solid var(--theme-background-color);
+
+  margin-left: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: aliceblue;
+}
+
+.audited-notifier .notifier-text {
+  margin-right: 30px;
+  font-size: 1.4rem;
+  color: whitesmoke;
+}
+
+.active {
+  animation: audited_notifier 1s ease-in-out;
+}
+
+@keyframes audited_notifier {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}

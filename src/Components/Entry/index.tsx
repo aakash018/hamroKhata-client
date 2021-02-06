@@ -1,23 +1,47 @@
 import axios from "axios"
-import { FormEvent, useRef } from "react"
+import { FormEvent, useRef, useState } from "react"
+import { IAudit } from "../../@types/audit"
+import { useLogs } from "../../Context/Logs"
 
 import "./style.css"
 
-const Entry:React.FC = () => {
+interface Props {
+    setShowAudied: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-    const amount_input:React.RefObject<HTMLInputElement>= useRef(null)
+const Entry:React.FC<Props> = ({setShowAudied}) => {
+
+    const amount_input:React.RefObject<HTMLInputElement> = useRef(null)
     const paid_by:React.RefObject<HTMLSelectElement> = useRef(null)
     const description:React.RefObject<HTMLTextAreaElement>  = useRef(null)
 
+    const [loading, setLoading] = useState<boolean>(false)
+    const { setAudits } = useLogs()
+
     const handleSubmit = async (e:FormEvent) => {
         e.preventDefault()
+        setLoading(true)
         const payload = {
             amount: amount_input.current?.value,
             paid_by: paid_by.current?.value,
             description: description.current?.value
         }
-        const resp = await axios.post("/api/entry", payload)
-        console.log(resp)
+        setShowAudied(true)
+        await axios.post("/api/entry", payload)
+            
+        //? TO LOAD NEW AUDIT AFTER ENTRY
+        const response = await axios
+                            .get<IAudit>("/api/audit")
+        if(setAudits){
+            setAudits(response.data)
+        }
+
+
+        setLoading(false)
+        setTimeout(() => {
+            setShowAudied(false)
+        }, 2000)
+        // clearTimeout(notifier_timer)
     }
 
     return (
@@ -41,7 +65,7 @@ const Entry:React.FC = () => {
                         <label htmlFor="desc-area">Description</label>
                         <textarea id="desc-area" ref={description} maxLength={120} required/>
                     </section>
-                    <button type="submit">Submit</button>
+                    <button type="submit" disabled={loading}>{!loading? "Submit": "Auditing"}</button>
                 </form>
             </div>
         </div>
