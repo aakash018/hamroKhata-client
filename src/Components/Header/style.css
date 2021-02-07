@@ -36,3 +36,13 @@
   text-decoration: none;
   color: aliceblue;
 }
+
+@media screen and (max-width: 670px) {
+  .page-header span {
+    margin-left: 20px;
+  }
+
+  .page-header ul {
+    display: none;
+  }
+}

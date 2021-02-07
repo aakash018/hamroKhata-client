@@ -7,6 +7,7 @@ import Home from "./Pages/Home"
 import Logs from "./Pages/Logs/index"
 import Audit from "./Pages/Audit/index";
 import LogsProvider from "./Context/Logs";
+import Footer from "./Components/Mobile_Footer";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route component={Audit} path="/audit" exact/>
           </LogsProvider>
         </Switch>
+        <Footer />
       </Router>
     </div>
   );

@@ -1,0 +1,48 @@
+footer {
+  position: fixed;
+  bottom: 0px;
+
+  width: 90vw;
+  height: 100px;
+  /* background-color: blue; */
+
+  margin-left: 20px;
+  margin-bottom: -10px;
+
+  display: none;
+}
+
+#footer-container {
+  position: relative;
+  /* background-color: bluevi olet; */
+  /* width: 100%;
+  height: 100%; */
+}
+
+.nav-buttons-mobile {
+  position: absolute;
+}
+
+.audit-button {
+  top: 20px;
+  right: 60px;
+}
+
+.logs-button {
+  top: 20px;
+  left: 43px;
+}
+
+.home-button {
+  top: -15.5px;
+  left: 47.5%;
+  transform: translateX(-50%);
+}
+
+@media screen and (max-width: 650px) {
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

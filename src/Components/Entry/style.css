@@ -71,3 +71,14 @@
 .entry-container label {
   text-align: center;
 }
+
+@media screen and (max-width: 390px) {
+  .entry-container {
+    width: 335px;
+    margin-top: -50px;
+  }
+
+  #desc-area {
+    width: 260px;
+  }
+}

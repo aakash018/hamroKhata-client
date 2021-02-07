@@ -1,0 +1,12 @@
+#mobile-nav-button {
+  width: 65px;
+  height: 65px;
+
+  background-color: var(--theme-background-color);
+  border-radius: 50%;
+  color: var(--theme-font-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -13,6 +13,10 @@ html {
   overflow: hidden;
 }
 
+body {
+  overflow: hidden;
+}
+
 button {
   cursor: pointer;
   outline: none;
