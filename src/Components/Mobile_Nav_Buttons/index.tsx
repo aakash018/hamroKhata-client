@@ -13,7 +13,7 @@ const MOBILE_NAV_BUTTONS:React.FC<Props> = ({label, onClick, path}) => {
         <>
           <button id="mobile-nav-button">
               <Link to={path}>
-                <img src={label} />
+                <img src={label} alt="nav-icons"/>
               </Link>
             </button>  
         </>
