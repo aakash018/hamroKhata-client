@@ -2,11 +2,11 @@ footer {
   position: fixed;
   bottom: 0px;
 
-  width: 90vw;
+  width: 100vw;
   height: 100px;
   /* background-color: blue; */
 
-  margin-left: 20px;
+  /* margin-left: 00px; */
   margin-bottom: -10px;
 
   display: none;
@@ -30,7 +30,7 @@ footer {
 
 .logs-button {
   top: 20px;
-  left: 43px;
+  left: 45px;
 }
 
 .home-button {
@@ -44,5 +44,11 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  footer {
+    display: none;
   }
 }

@@ -1,4 +1,5 @@
 .audit-card-container {
+  position: relative;
   background-color: var(--audit-card-background);
 
   width: 600px;
@@ -31,4 +32,53 @@
   height: 100px;
 
   object-fit: cover;
+}
+
+.audit-data-container {
+  display: flex;
+  width: 400px;
+  justify-content: space-evenly;
+  height: 80%;
+}
+
+.audit-data {
+  text-align: center;
+  min-width: 100px;
+  /* background-color: bisque; */
+}
+.audit-data-name {
+  font-size: 1.3rem;
+}
+
+.audit-data-amount {
+  margin-top: 30px;
+  font-size: 1.7rem;
+}
+
+@media screen and (max-width: 650px) {
+  .audit-card-container {
+    width: 350px;
+    height: 110px;
+  }
+
+  .audit-profile-picture {
+    width: 140px;
+    height: 90px;
+
+    margin-left: 10px;
+  }
+
+  .audit-data {
+    /* background-color: aqua; */
+    min-width: 40px;
+  }
+
+  .audit-data-name {
+    font-size: 1.2rem;
+  }
+
+  .audit-data-amount {
+    margin-top: 30px;
+    font-size: 1.4rem;
+  }
 }
