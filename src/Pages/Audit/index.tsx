@@ -31,16 +31,15 @@ const Audit:React.FC = () => {
                         setLoading(true)
                         const response = await axios
                                                 .get<IAudit>(`${process.env.REACT_APP_API_ENDPOINT}/api/audit`)
-                        if(setAudits){
-                            // profile_pics.current = [Aakash, Deekshit, Subash, Yaman]
-                            setAudits(response.data)
-                        }
                         setLoading(false)
                         if(response.data.message === "No Data Found"){
-                            setError({
+                            return setError({
                                 display: true,
                                 errorMessage: response.data.message
                             })
+                        }
+                        if(setAudits){
+                            setAudits(response.data)
                         }
                     }
                 }
