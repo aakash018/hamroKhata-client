@@ -1,0 +1,13 @@
+.audit-notifer-wraper {
+  position: absolute;
+  bottom: 40px;
+  left: 50px;
+}
+
+@media screen and (max-width: 650px) {
+  .audit-notifer-wraper {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+  }
+}

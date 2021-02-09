@@ -29,8 +29,11 @@ const Entry:React.FC<Props> = ({setShowAudied}) => {
         try {
                 if(process.env.REACT_APP_API_ENDPOINT){
                     setShowAudied(true)
-                    await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/api/entry`, payload)
-                        
+                    const entry_response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/api/entry`, payload)
+                    if(entry_response as unknown as string === "Errro with database"){
+                        setLoading(false)
+                        return console.log(entry_response)
+                    }
                     //? TO LOAD NEW AUDIT AFTER ENTRY
                     const response = await axios
                                         .get<IAudit>(`${process.env.REACT_APP_API_ENDPOINT}/api/audit`)
@@ -41,7 +44,7 @@ const Entry:React.FC<Props> = ({setShowAudied}) => {
                     setLoading(false)
                     setTimeout(() => {
                         setShowAudied(false)
-                    }, 2000)
+                    }, 1500)
                 }
                 // clearTimeout(notifier_timer)
 
