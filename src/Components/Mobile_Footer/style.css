@@ -47,7 +47,7 @@ footer {
   }
 }
 
-@media screen and (max-height: 500px) {
+@media screen and (max-height: 600px) {
   footer {
     display: none;
   }
