@@ -9,16 +9,16 @@ interface Props {
     setShowAudied: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const Entry:React.FC<Props> = ({setShowAudied}) => {
+const Entry: React.FC<Props> = ({ setShowAudied }) => {
 
-    const amount_input:React.RefObject<HTMLInputElement> = useRef(null)
-    const paid_by:React.RefObject<HTMLSelectElement> = useRef(null)
-    const description:React.RefObject<HTMLTextAreaElement>  = useRef(null)
+    const amount_input: React.RefObject<HTMLInputElement> = useRef(null)
+    const paid_by: React.RefObject<HTMLSelectElement> = useRef(null)
+    const description: React.RefObject<HTMLTextAreaElement> = useRef(null)
 
     const [loading, setLoading] = useState<boolean>(false)
     const { setAudits } = useLogs()
 
-    const handleSubmit = async (e:FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
         setLoading(true)
         const payload = {
@@ -27,26 +27,25 @@ const Entry:React.FC<Props> = ({setShowAudied}) => {
             description: description.current?.value
         }
         try {
-                if(process.env.REACT_APP_API_ENDPOINT){
-                    setShowAudied(true)
-                    const entry_response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/api/entry`, payload)
-                    if(entry_response as unknown as string === "Errro with database"){
-                        setLoading(false)
-                        return console.log(entry_response)
-                    }
-                    //? TO LOAD NEW AUDIT AFTER ENTRY
-                    const response = await axios
-                                        .get<IAudit>(`${process.env.REACT_APP_API_ENDPOINT}/api/audit`)
-                    if(setAudits){
-                        setAudits(response.data)
-                    }
-            
+            if (process.env.REACT_APP_API_ENDPOINT) {
+                const entry_response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/api/entry`, payload)
+                if (entry_response as unknown as string === "Errro with database") {
                     setLoading(false)
-                    setTimeout(() => {
-                        setShowAudied(false)
-                    }, 1500)
+                    return console.log(entry_response)
                 }
-                // clearTimeout(notifier_timer)
+                //? TO LOAD NEW AUDIT AFTER ENTRY
+                const response = await axios
+                    .get<IAudit>(`${process.env.REACT_APP_API_ENDPOINT}/api/audit`)
+                if (setAudits) {
+                    setAudits(response.data)
+                }
+                setLoading(false)
+                setShowAudied(true)
+                setTimeout(() => {
+                    setShowAudied(false)
+                }, 1500)
+            }
+            // clearTimeout(notifier_timer)
 
         } catch {
             setLoading(false)
@@ -60,7 +59,7 @@ const Entry:React.FC<Props> = ({setShowAudied}) => {
                 <form onSubmit={handleSubmit}>
                     <section>
                         <label htmlFor="amount">Amount</label>
-                        <input placeholder="Amount" type="number" id="amount" ref={amount_input} required/>
+                        <input placeholder="Amount" type="number" id="amount" ref={amount_input} required />
                     </section>
                     <section>
                         <label htmlFor="person-select">Paid By</label>
@@ -73,9 +72,9 @@ const Entry:React.FC<Props> = ({setShowAudied}) => {
                     </section>
                     <section>
                         <label htmlFor="desc-area">Description</label>
-                        <textarea id="desc-area" ref={description} maxLength={120} required/>
+                        <textarea id="desc-area" ref={description} maxLength={120} required />
                     </section>
-                    <button type="submit" disabled={loading}>{!loading? "Submit": "Auditing"}</button>
+                    <button type="submit" disabled={loading}>{!loading ? "Submit" : "Auditing"}</button>
                 </form>
             </div>
         </div>
