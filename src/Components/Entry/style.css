@@ -31,23 +31,6 @@
   transform: translateY(-50%);
 }
 
-.entry-container button {
-  padding: 1rem 4rem 1rem 4rem;
-  font-family: var(--default-font);
-  border-radius: 2rem;
-
-  background: var(--theme-font-color);
-  color: white;
-
-  position: absolute;
-  left: 20%;
-  /* transform: translateX(-50%); */
-}
-
-.entry-container button:disabled {
-  background-color: rgb(112, 112, 112);
-  cursor: not-allowed;
-}
 
 #amount,
 #person-select,

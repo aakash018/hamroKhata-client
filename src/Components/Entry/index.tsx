@@ -2,6 +2,7 @@ import axios from "axios"
 import { FormEvent, useRef, useState } from "react"
 import { IAudit } from "../../@types/audit"
 import { useLogs } from "../../Context/Logs"
+import MainButton from "../MainButton/index"
 
 import "./style.css"
 
@@ -74,7 +75,7 @@ const Entry: React.FC<Props> = ({ setShowAudied }) => {
                         <label htmlFor="desc-area">Description</label>
                         <textarea id="desc-area" ref={description} maxLength={120} required />
                     </section>
-                    <button type="submit" disabled={loading}>{!loading ? "Submit" : "Auditing"}</button>
+                    <MainButton type="submit" disable={loading}>{!loading ? "Submit" : "Auditing"}</MainButton>
                 </form>
             </div>
         </div>
