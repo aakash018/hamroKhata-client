@@ -3,6 +3,9 @@ import { FormEvent, useRef, useState } from "react"
 import { IAudit } from "../../@types/audit"
 import { useLogs } from "../../Context/Logs"
 import MainButton from "../MainButton/index"
+import EXANGE_BUTTON from "../Entry_Switch_Button/index"
+
+import Exange_button_icon from "../../images/icons/exange_entry.svg";
 
 import "./style.css"
 
@@ -57,6 +60,11 @@ const Entry: React.FC<Props> = ({ setShowAudied }) => {
     return (
         <div className="entry-wraper">
             <div className="entry-container">
+                <section className="exange_button">
+                    <EXANGE_BUTTON path="/payment">
+                        <img src={Exange_button_icon} alt="exange_button" />
+                    </EXANGE_BUTTON>
+                </section>
                 <form onSubmit={handleSubmit}>
                     <section>
                         <label htmlFor="amount">Amount</label>

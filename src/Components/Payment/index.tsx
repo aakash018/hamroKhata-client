@@ -1,6 +1,9 @@
 import axios from 'axios'
 import React, { useRef, useState } from 'react'
 import MainButton from '../MainButton'
+import EXANGE_BUTTON from "../Entry_Switch_Button/index"
+import Exange_button_icon from "../../images/icons/exange_entry.svg";
+
 import "./style.css"
 
 interface Props {
@@ -35,6 +38,11 @@ const Payment: React.FC<Props> = ({ setShowAudied }) => {
     return (
         <div className="payment-wraper">
             <div id="payment-container">
+                <section className="payment-exange-button">
+                    <EXANGE_BUTTON path="/">
+                        <img src={Exange_button_icon} alt="exange_button" />
+                    </EXANGE_BUTTON>
+                </section>
                 <form onSubmit={handleSubmit}>
                     <section className="payment-payer-info">
                         <section>
