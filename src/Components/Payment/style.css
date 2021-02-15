@@ -117,8 +117,8 @@
   }
    
   .payment-exange-button{
-    left: 10px;
-    bottom: 0px;
+    right: 10px;
+    top: 10px;
   }
 
   #payment-container form {
