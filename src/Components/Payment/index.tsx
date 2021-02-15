@@ -1,10 +1,14 @@
 import axios from 'axios'
 import React, { useRef, useState } from 'react'
 import MainButton from '../MainButton'
+import ErrorContainer from "../ErrorContainer/ErrorContainer"
 import EXANGE_BUTTON from "../Entry_Switch_Button/index"
 import Exange_button_icon from "../../images/icons/exange_entry.svg";
 
 import "./style.css"
+import { IAudit } from '../../@types/audit';
+import { useLogs } from '../../Context/Logs';
+import IError from "../../@types/error"
 
 interface Props {
     setShowAudied: React.Dispatch<React.SetStateAction<boolean>>
@@ -17,6 +21,15 @@ const Payment: React.FC<Props> = ({ setShowAudied }) => {
     const amount: React.RefObject<HTMLInputElement> = useRef(null)
 
     const [loading, setLoading] = useState(false)
+    const [selectedForFrom, setSelectedForFrom] = useState<string>("Aakash")
+    const [selectedForTo, setSelectedForTo] = useState<string>("Deekshit")
+    const [error, setError] = useState<IError>({
+        display: false,
+        errorMessage: ""
+    })
+
+    const { setAudits } = useLogs()
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -26,18 +39,44 @@ const Payment: React.FC<Props> = ({ setShowAudied }) => {
             amount: amount.current?.value,
         }
         setLoading(true)
-        await axios
-            .post(`${process.env.REACT_APP_API_ENDPOINT}/api/payment`, payLoad)
-        setLoading(false)
-        setShowAudied(true)
-        setTimeout(() => {
-            setShowAudied(false)
-        }, 1500)
+        try {
+            await axios
+                .post(`${process.env.REACT_APP_API_ENDPOINT}/api/payment`, payLoad)
+            const response = await axios
+                .get<IAudit>(`${process.env.REACT_APP_API_ENDPOINT}/api/audit`)
+            if (setAudits) {
+                setAudits(response.data)
+            }
+            setLoading(false)
+            setShowAudied(true)
+            setTimeout(() => {
+                setShowAudied(false)
+            }, 1500)
+        } catch {
+            setLoading(false)
+            console.log(e)
+            setError({
+                display: true,
+                errorMessage: "Error Connecting to server"
+            })
+        }
     }
+
+    const handleNameSelectForForm = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedForFrom(e.target.value)
+    }
+    const handleNameSelectForTo = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedForTo(e.target.value)
+    }
+
+    const names = useRef(["Aakash", "Deekshit", "Subash", "Yaman"])
 
     return (
         <div className="payment-wraper">
             <div id="payment-container">
+                <section className="error-wraper-payment">
+                    <ErrorContainer display={error.display} errorMessage={error.errorMessage} />
+                </section>
                 <section className="payment-exange-button">
                     <EXANGE_BUTTON path="/">
                         <img src={Exange_button_icon} alt="exange_button" />
@@ -47,20 +86,30 @@ const Payment: React.FC<Props> = ({ setShowAudied }) => {
                     <section className="payment-payer-info">
                         <section>
                             <label htmlFor="from-payment-input">From</label>
-                            <select id="from-payment-input" required ref={paid_by}>
-                                <option>Aakash</option>
-                                <option>Deekshit</option>
-                                <option>Subash</option>
-                                <option>Yaman</option>
+                            <select className="from-payment-input-from" required ref={paid_by} onChange={handleNameSelectForForm}>
+                                {
+                                    names.current.map((name, i) => {
+                                        if (selectedForTo !== name) {
+                                            return <option key={i} >{name}</option>
+                                        } else {
+                                            return ""
+                                        }
+                                    })
+                                }
                             </select>
                         </section>
                         <section>
                             <label htmlFor="to-payment-input" >To</label>
-                            <select id="from-payment-input" ref={paid_to} required>
-                                <option>Aakash</option>
-                                <option>Deekshit</option>
-                                <option>Subash</option>
-                                <option>Yaman</option>
+                            <select className="from-payment-input-to" ref={paid_to} required onChange={handleNameSelectForTo}>
+                                {
+                                    names.current.map((name, i) => {
+                                        if (selectedForFrom !== name) {
+                                            return <option key={i} >{name}</option>
+                                        } else {
+                                            return ""
+                                        }
+                                    })
+                                }
                             </select>
                         </section>
                     </section>

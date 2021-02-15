@@ -27,6 +27,12 @@
     border-radius: 10px;
 }
 
+.error-wraper-payment{
+  position: absolute;
+  top: 10px;
+  left: 50px;
+}
+
 .payment-exange-button{
   position: absolute;
   top: 10px;
@@ -37,7 +43,7 @@
 .payment-submit-button{
   position: absolute;
   bottom: -40px;
-  left: 40%;
+  left: 40%;  
 }
 #payment-container form {
   position: absolute;
@@ -94,5 +100,39 @@
   padding-left: 10px;
 
   font-family: var(--theme-default-font);
+
+}
+
+@media screen and (max-width: 650px){
+  #payment-container{
+    width: 330px;
+    height: 350px;
+
+    margin-bottom: 50px;
+  }
+
+  .payment-payer-info{
+    flex-direction: column;
+    height: 100px;
+  }
+   
+  .payment-exange-button{
+    left: 10px;
+    bottom: 0px;
+  }
+
+  #payment-container form {
+    top: 50%;
+    transform: translateY(-60%);
+  }
+
+  .payment-amount-container label{
+    margin-left: 150px;
+    margin-right: 35px;
+  }
+
+  .from-payment-input-to{
+    margin-left: 20px;
+  }
 
 }
