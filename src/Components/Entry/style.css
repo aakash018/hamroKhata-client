@@ -62,10 +62,16 @@
 }
 
 @media screen and (max-width: 390px) {
+
+
   .entry-container {
-    width: 335px;
-    height: 360px;
-    margin-top: -50px;
+    width: 305px;
+    height: 340px;
+    margin-top: -80px;
+  }
+
+  .entry-container form {
+    left: 30px;
   }
 
   #desc-area {
@@ -73,6 +79,13 @@
   }
 
   .exange_button{
-    left: 10px;
+    top: 4px;
+    left: 4px;
+  }
+
+  .entry-submit{
+    position: absolute;
+    bottom: 10px;
+    left: 20%;
   }
 }

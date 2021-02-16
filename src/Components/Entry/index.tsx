@@ -83,7 +83,9 @@ const Entry: React.FC<Props> = ({ setShowAudied }) => {
                         <label htmlFor="desc-area">Description</label>
                         <textarea id="desc-area" ref={description} maxLength={120} required />
                     </section>
-                    <MainButton type="submit" disable={loading}>{!loading ? "Submit" : "Auditing"}</MainButton>
+                    <section className="entry-submit">
+                        <MainButton type="submit" disable={loading}>{!loading ? "Submit" : "Auditing"}</MainButton>
+                    </section>
                 </form>
             </div>
         </div>

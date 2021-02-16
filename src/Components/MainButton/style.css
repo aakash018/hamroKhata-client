@@ -14,3 +14,10 @@
     background-color: rgb(112, 112, 112);
     cursor: not-allowed;
 }
+
+@media screen and (max-width: 390px){
+    #main-button{
+        padding: 0.6rem 2.2rem 0.6rem 2.2rem;
+        font-size: 1.3rem;
+    }  
+}
