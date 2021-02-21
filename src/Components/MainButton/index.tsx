@@ -2,9 +2,9 @@ import React from 'react'
 import "./style.css"
 
 interface Props {
-    type: "submit" | "reset",
+    type?: "submit" | "reset",
     onclick?: () => any
-    disable: boolean
+    disable?: boolean
 }
 
 const MainButton: React.FC<Props> = ({ children, type, onclick, disable }) => {

@@ -8,6 +8,7 @@ import EXANGE_BUTTON from "../Entry_Switch_Button/index"
 import Exange_button_icon from "../../images/icons/exange_entry.svg";
 
 import "./style.css"
+import { ILogs } from "../../@types/logs"
 
 interface Props {
     setShowAudied: React.Dispatch<React.SetStateAction<boolean>>
@@ -20,7 +21,7 @@ const Entry: React.FC<Props> = ({ setShowAudied }) => {
     const description: React.RefObject<HTMLTextAreaElement> = useRef(null)
 
     const [loading, setLoading] = useState<boolean>(false)
-    const { setAudits } = useLogs()
+    const { setAudits, setLogs } = useLogs()
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
@@ -38,19 +39,32 @@ const Entry: React.FC<Props> = ({ setShowAudied }) => {
                     return console.log(entry_response)
                 }
                 //? TO LOAD NEW AUDIT AFTER ENTRY
-                const response = await axios
+                const responseAudit = await axios
                     .get<IAudit>(`${process.env.REACT_APP_API_ENDPOINT}/api/audit`)
                 if (setAudits) {
-                    setAudits(response.data)
+                    setAudits(responseAudit.data)
                 }
-                setLoading(false)
-                setShowAudied(true)
-                setTimeout(() => {
-                    setShowAudied(false)
-                }, 1500)
-            }
-            // clearTimeout(notifier_timer)
 
+                //? TO LOAD NEW LOGS
+
+                const responseLogs = await axios
+                    .get<ILogs[] | string>(`${process.env.REACT_APP_API_ENDPOINT}/api/logs`,
+                        { params: { log_position: 0 } }
+                    )
+                if (setLogs) {
+                    if (responseLogs.data === "No Data Found") {
+                        return setLoading(false)
+                    }
+                    // console.log("Entry")
+                    setLogs(responseLogs.data as any)
+                    setLoading(false)
+                    setShowAudied(true)
+                    setTimeout(() => {
+                        setShowAudied(false)
+                    }, 1500)
+                }
+                // clearTimeout(notifier_timer)
+            }
         } catch {
             setLoading(false)
             console.error("Error on connecting to server")

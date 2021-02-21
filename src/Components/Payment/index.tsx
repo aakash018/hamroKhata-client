@@ -42,11 +42,14 @@ const Payment: React.FC<Props> = ({ setShowAudied }) => {
         try {
             await axios
                 .post(`${process.env.REACT_APP_API_ENDPOINT}/api/payment`, payLoad)
+
+            //? TO UPDATE AUDITS
             const response = await axios
                 .get<IAudit>(`${process.env.REACT_APP_API_ENDPOINT}/api/audit`)
             if (setAudits) {
                 setAudits(response.data)
             }
+
             setLoading(false)
             setShowAudied(true)
             setTimeout(() => {
@@ -120,7 +123,6 @@ const Payment: React.FC<Props> = ({ setShowAudied }) => {
                     <section className="payment-submit-button">
                         <MainButton type="submit" disable={loading}>{loading ? "Auditing" : "Submit"}</MainButton>
                     </section>
-
                 </form>
             </div>
         </div>

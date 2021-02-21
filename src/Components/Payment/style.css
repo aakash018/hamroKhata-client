@@ -77,14 +77,14 @@
 }
 
 .payment-amount-container{
-  width: 600px;
+  /* width: 600px; */
   /* background-color: aqua; */
 
   display: flex;
   /* justify-content: center; */
   align-items: center;
 
-  /* margin-left: 50px; */
+  margin-left: 50px;
 }
 
 
@@ -96,6 +96,8 @@
   padding-left: 10px;
 
   font-family: var(--theme-default-font);
+
+  margin-left: 40px;
 
 }
 
