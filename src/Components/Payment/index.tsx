@@ -9,6 +9,7 @@ import "./style.css"
 import { IAudit } from '../../@types/audit';
 import { useLogs } from '../../Context/Logs';
 import IError from "../../@types/error"
+import { IPayment } from '../../@types/entry'
 
 interface Props {
     setShowAudied: React.Dispatch<React.SetStateAction<boolean>>
@@ -33,10 +34,10 @@ const Payment: React.FC<Props> = ({ setShowAudied }) => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        const payLoad = {
-            paid_by: paid_by.current?.value,
-            paid_to: paid_to.current?.value,
-            amount: amount.current?.value,
+        const payLoad: IPayment = {
+            paid_by: paid_by.current!.value,
+            paid_to: paid_to.current!.value,
+            amount: parseInt(amount.current!.value),
         }
         setLoading(true)
         try {

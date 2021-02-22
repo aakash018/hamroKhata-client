@@ -5,3 +5,9 @@ export interface IEntry {
     freeze: boolean,
     frozenRoomies: Array<string>
 }
+
+export interface IPayment {
+    amount: number,
+    paid_by: string,
+    paid_to: string
+}
