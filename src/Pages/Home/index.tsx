@@ -10,16 +10,27 @@ const Home: React.FC = () => {
 
     const [showAudited, setShowAudited] = useState<boolean>(false)
     const [showFreezeModal, setShowFreezeModal] = useState<boolean>(false)
+    const [frozenRoomiesList, setFrozenRoomiesList] = useState<string[]>([])
 
-    // console.log(process.env.REACT_APP_API_ENDPOINT)
+    const [names, setNames] = useState(["Aakash", "Deekshit", "Subash", "Yaman"])
+
     return (
         <>
             <div className="audit-notifer-wraper">
                 <AUDIT_NOTIFIER display={showAudited} />
             </div>
-            <Entry setShowAudied={setShowAudited} />
-            <Modal open={true} onClose={() => { setShowFreezeModal(false) }} title={"Freeze Audit"}>
-                <FREEZE_MODAL />
+            <Entry setShowAudied={setShowAudited} setShowFreezeModal={setShowFreezeModal} frozenRoomiesList={frozenRoomiesList} />
+            <Modal
+                open={showFreezeModal}
+                onClose={() => { setShowFreezeModal(false) }}
+                title={"Freeze Audit"}
+            >
+                <FREEZE_MODAL
+                    frozenRoomiesList={frozenRoomiesList}
+                    setFrozenRoomiesList={setFrozenRoomiesList}
+                    names={names}
+                    setNames={setNames}
+                />
             </Modal>
         </>
     )

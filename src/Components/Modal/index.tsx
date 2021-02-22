@@ -19,14 +19,16 @@ const Modal: React.FC<Props> = ({ onClose, children, open, title }) => {
         return (
             ReactDOM.createPortal(
                 <>
-                    <div className="modal-wraper" onClick={onClose}>
-                        <div className="modal-container">
-                            <section className="modal-title">
-                                <span>{title}</span>
-                                <section role="button" className="cancle-button" onClick={onClose}>C</section>
-                            </section>
+                    <div className="modal-background" onClick={onClose}>
+                    </div>
+                    <div className="modal-container">
+                        <section className="modal-title">
+                            <span>{title}</span>
+                            <section role="button" className="cancle-button" onClick={onClose}>&times;</section>
+                        </section>
+                        <section className="model-main-area" >
                             {children}
-                        </div>
+                        </section>
                     </div>
                 </>
                 , portalElement)

@@ -4,15 +4,19 @@ import { useHistory } from "react-router-dom"
 import "./style.css";
 
 interface Props {
-    path: "/" | "/payment"
+    path?: "/" | "/payment"
+    onClick?: () => any
 }
 
-const ENTRY_SWITCH_BUTTON: React.FC<Props> = ({ children, path }) => {
+const SECONDARY_BUTTON: React.FC<Props> = ({ children, path, onClick }) => {
 
     const history = useHistory()
 
     const handleClick = () => {
-        history.push(path)
+        if (path) return history.push(path)
+        if (onClick) {
+            onClick()
+        }
     }
 
     return (
@@ -22,4 +26,4 @@ const ENTRY_SWITCH_BUTTON: React.FC<Props> = ({ children, path }) => {
     )
 }
 
-export default ENTRY_SWITCH_BUTTON
+export default SECONDARY_BUTTON

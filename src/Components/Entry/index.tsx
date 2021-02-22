@@ -3,18 +3,22 @@ import { FormEvent, useRef, useState } from "react"
 import { IAudit } from "../../@types/audit"
 import { useLogs } from "../../Context/Logs"
 import MainButton from "../MainButton/index"
-import EXANGE_BUTTON from "../Entry_Switch_Button/index"
+import SECONDARY_BUTTON from "../Secondary_Button/index"
 
 import Exange_button_icon from "../../images/icons/exange_entry.svg";
+import Freeze_icon from "../../images/icons/freeze_audit.svg"
 
 import "./style.css"
 import { ILogs } from "../../@types/logs"
+import { IEntry } from "../../@types/entry"
 
 interface Props {
-    setShowAudied: React.Dispatch<React.SetStateAction<boolean>>
+    setShowAudied: React.Dispatch<React.SetStateAction<boolean>>,
+    setShowFreezeModal: React.Dispatch<React.SetStateAction<boolean>>,
+    frozenRoomiesList: string[]
 }
 
-const Entry: React.FC<Props> = ({ setShowAudied }) => {
+const Entry: React.FC<Props> = ({ setShowAudied, setShowFreezeModal, frozenRoomiesList }) => {
 
     const amount_input: React.RefObject<HTMLInputElement> = useRef(null)
     const paid_by: React.RefObject<HTMLSelectElement> = useRef(null)
@@ -26,18 +30,43 @@ const Entry: React.FC<Props> = ({ setShowAudied }) => {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
         setLoading(true)
-        const payload = {
-            amount: amount_input.current?.value,
-            paid_by: paid_by.current?.value,
-            description: description.current?.value
+        let payload: IEntry = {
+            amount: 0,
+            description: "",
+            freeze: false,
+            frozenRoomies: [],
+            paid_by: ""
+
+        };
+        if (frozenRoomiesList.length === 0) {
+            payload = {
+                amount: parseInt(amount_input.current!.value),
+                paid_by: paid_by.current!.value,
+                description: description.current!.value,
+                freeze: false,
+                frozenRoomies: []
+            }
+        } else {
+            payload = {
+                amount: parseInt(amount_input.current!.value),
+                paid_by: paid_by.current!.value,
+                description: description.current!.value,
+                freeze: true,
+                frozenRoomies: frozenRoomiesList
+            }
         }
+
+
         try {
             if (process.env.REACT_APP_API_ENDPOINT) {
-                const entry_response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/api/entry`, payload)
+                const entry_response = await axios
+                    .post(`${process.env.REACT_APP_API_ENDPOINT}/api/entry`, payload)
                 if (entry_response as unknown as string === "Errro with database") {
                     setLoading(false)
                     return console.log(entry_response)
                 }
+
+
                 //? TO LOAD NEW AUDIT AFTER ENTRY
                 const responseAudit = await axios
                     .get<IAudit>(`${process.env.REACT_APP_API_ENDPOINT}/api/audit`)
@@ -75,9 +104,9 @@ const Entry: React.FC<Props> = ({ setShowAudied }) => {
         <div className="entry-wraper">
             <div className="entry-container">
                 <section className="exange_button">
-                    <EXANGE_BUTTON path="/payment">
+                    <SECONDARY_BUTTON path="/payment">
                         <img src={Exange_button_icon} alt="exange_button" />
-                    </EXANGE_BUTTON>
+                    </SECONDARY_BUTTON>
                 </section>
                 <form onSubmit={handleSubmit}>
                     <section>
@@ -98,9 +127,20 @@ const Entry: React.FC<Props> = ({ setShowAudied }) => {
                         <textarea id="desc-area" ref={description} maxLength={120} required />
                     </section>
                     <section className="entry-submit">
-                        <MainButton type="submit" disable={loading}>{!loading ? "Submit" : "Auditing"}</MainButton>
+                        <MainButton
+                            type="submit"
+                            disable={loading}
+                            frozen={frozenRoomiesList.length !== 0}
+                        >
+                            {!loading ? "Submit" : "Auditing"}
+                        </MainButton>
                     </section>
                 </form>
+                <section className="freeze-audit-button">
+                    <SECONDARY_BUTTON onClick={() => setShowFreezeModal(true)}>
+                        <img src={Freeze_icon} alt="freeze_button" />
+                    </SECONDARY_BUTTON>
+                </section>
             </div>
         </div>
     )

@@ -49,3 +49,9 @@
 .delete-icon {
   color: var(--theme-font-color);
 }
+
+ @media screen and (max-width: 650px){
+  .logs-container .triangle-arrow{
+    left: 5px;
+   }
+ }

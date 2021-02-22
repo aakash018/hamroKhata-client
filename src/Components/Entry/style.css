@@ -61,6 +61,12 @@
   text-align: center;
 }
 
+.freeze-audit-button{
+  position: absolute;
+    bottom: 30px;
+    left: 12%;
+}
+
 @media screen and (max-width: 390px) {
 
 
@@ -87,5 +93,10 @@
     position: absolute;
     bottom: 10px;
     left: 20%;
+  }
+
+  .freeze-audit-button{
+    bottom: 15px;
+    left: 1%;
   }
 }

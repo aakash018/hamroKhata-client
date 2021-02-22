@@ -1,4 +1,4 @@
-#main-button{
+.main-button{
     padding: 1rem 4rem 1rem 4rem;
     font-family: var(--default-font);
     border-radius: 2rem;
@@ -10,13 +10,17 @@
     left: 20%;
 }
 
-#main-button:disabled{
+.main-button:disabled{
     background-color: rgb(112, 112, 112);
     cursor: not-allowed;
 }
 
+.frozen {
+    background-color: rgb(50, 90, 128);
+}
+
 @media screen and (max-width: 390px){
-    #main-button{
+    .main-button{
         padding: 0.6rem 2.2rem 0.6rem 2.2rem;
         font-size: 1.3rem;
     }  

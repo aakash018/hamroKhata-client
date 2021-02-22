@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useRef, useState } from 'react'
 import MainButton from '../MainButton'
 import ErrorContainer from "../ErrorContainer/ErrorContainer"
-import EXANGE_BUTTON from "../Entry_Switch_Button/index"
+import EXANGE_BUTTON from "../Secondary_Button/index"
 import Exange_button_icon from "../../images/icons/exange_entry.svg";
 
 import "./style.css"

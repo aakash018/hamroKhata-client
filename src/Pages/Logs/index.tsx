@@ -23,21 +23,21 @@ const Logs: React.FC = () => {
     // !     INFINITY LOOP
     // !       
     const handleLogsRequest = useCallback(async () => {
-        console.log("send")
-        if (sendLogRequest && process.env.REACT_APP_API_ENDPOINT) {
+        if (sendLogRequest.current && process.env.REACT_APP_API_ENDPOINT) {
             sendLogRequest.current = false
+            console.log("Request Position", log_request_position.current)
             const response = await axios
                 .get<ILogs[] | string>(`${process.env.REACT_APP_API_ENDPOINT}/api/logs`,
                     { params: { log_position: log_request_position.current } }
                 )
+            log_request_position.current = log_request_position.current + 10
             if (setLogs) {
                 if (response.data === "No Data Found") {
-                    // console.log("Yo run bhayo", logs)
+
                     return setLoading(false)
                 }
-                setLogs(prev => { console.log(prev); return prev.concat(response.data as any) })
+                setLogs(prev => { return prev.concat(response.data as any) })
                 setLoading(false)
-                log_request_position.current = log_request_position.current + 10
                 sendLogRequest.current = true
 
             }
@@ -53,7 +53,6 @@ const Logs: React.FC = () => {
 
                 if (logs?.length === 0) {
                     setLoading(true)
-                    console.log("Anotheer also Ran")
                     handleLogsRequest()
                 }
             }
@@ -64,13 +63,11 @@ const Logs: React.FC = () => {
     // ! Double Data in last request
     useEffect(() => {
         const element = logs_container.current
-        logs_container.current?.addEventListener("scroll", () => {
+        element?.addEventListener("scroll", () => {
             if (element) {
                 if (element.scrollTop === element.scrollHeight - element.offsetHeight + 2) {
                     //? To check for end of logs 
-                    // console.log(logs)
                     if (logs!.length + 10 >= logsCount.current!.data) {
-                        console.log("Not Send")
                         return ""
                     } else {
                         handleLogsRequest()
