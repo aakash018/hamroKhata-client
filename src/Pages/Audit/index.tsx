@@ -27,19 +27,26 @@ const Audit: React.FC = () => {
         (
             async () => {
                 if (audits == null && process.env.REACT_APP_API_ENDPOINT) {
-
-                    setLoading(true)
-                    const response = await axios
-                        .get<IAudit>(`${process.env.REACT_APP_API_ENDPOINT}/api/audit`)
-                    setLoading(false)
-                    if (response.data.message === "No Data Found") {
-                        return setError({
+                    try {
+                        setLoading(true)
+                        const response = await axios
+                            .get<IAudit>(`${process.env.REACT_APP_API_ENDPOINT}/api/audit`)
+                        setLoading(false)
+                        if (response.data.message === "No Data Found") {
+                            return setError({
+                                display: true,
+                                errorMessage: response.data.message
+                            })
+                        }
+                        if (setAudits) {
+                            setAudits(response.data)
+                        }
+                    } catch {
+                        setLoading(false)
+                        setError({
                             display: true,
-                            errorMessage: response.data.message
+                            errorMessage: "Error Connecting To Database !"
                         })
-                    }
-                    if (setAudits) {
-                        setAudits(response.data)
                     }
                 }
             }

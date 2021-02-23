@@ -11,6 +11,8 @@ import Freeze_icon from "../../images/icons/freeze_audit.svg"
 import "./style.css"
 import { ILogs } from "../../@types/logs"
 import { IEntry } from "../../@types/entry"
+import IError from "../../@types/error"
+import ErrorContainer from "../ErrorContainer/ErrorContainer"
 
 interface Props {
     setShowAudied: React.Dispatch<React.SetStateAction<boolean>>,
@@ -26,6 +28,10 @@ const Entry: React.FC<Props> = ({ setShowAudied, setShowFreezeModal, frozenRoomi
 
     const [loading, setLoading] = useState<boolean>(false)
     const { setAudits, setLogs } = useLogs()
+    const [error, setError] = useState<IError>({
+        display: false,
+        errorMessage: ""
+    })
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
@@ -96,6 +102,10 @@ const Entry: React.FC<Props> = ({ setShowAudied, setShowFreezeModal, frozenRoomi
             }
         } catch {
             setLoading(false)
+            setError({
+                display: true,
+                errorMessage: "Error on connecting to server"
+            })
             console.error("Error on connecting to server")
         }
     }
@@ -103,6 +113,14 @@ const Entry: React.FC<Props> = ({ setShowAudied, setShowFreezeModal, frozenRoomi
     return (
         <div className="entry-wraper">
             <div className="entry-container">
+                <section
+                    style={{
+                        margin: "20px",
+                        marginLeft: "50px"
+                    }}
+                >
+                    <ErrorContainer errorMessage={error.errorMessage} display={error.display} />
+                </section>
                 <section className="exange_button">
                     <SECONDARY_BUTTON path="/payment">
                         <img src={Exange_button_icon} alt="exange_button" />
