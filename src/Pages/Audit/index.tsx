@@ -5,7 +5,8 @@ import AuditCard from "../../Components/AuditCard/index"
 import { IAudit } from "../../@types/audit";
 import axios from "axios";
 import { useLogs } from "../../Context/Logs";
-// Profile Pics
+// Icons
+import loadingAnimation from "../../images/icons/loadingAnimation.svg"
 
 
 interface Error {
@@ -13,7 +14,12 @@ interface Error {
     errorMessage: string
 }
 
-
+const LoadingStyle: React.CSSProperties = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%,-50%)"
+}
 
 
 const Audit: React.FC = () => {
@@ -57,8 +63,9 @@ const Audit: React.FC = () => {
         <div>
             <div className="audit-wraper">
                 <div className="audit-container">
-                    {loading && <h1>Loading...</h1>}
-                    {error?.display && <h1>{error.errorMessage}</h1>}
+                    {/* {loading && <h1>Loading...</h1>} */}
+                    {loading && <img src={loadingAnimation} style={LoadingStyle} />}
+                    {error?.display && !loading && <h1 style={LoadingStyle} >{error.errorMessage}</h1>}
                     {audits && !error?.display && Object.keys(audits).map((name, i) => (
                         <AuditCard
                             key={i}

@@ -7,6 +7,10 @@ import { ILogs } from "../../@types/logs"
 import LogsTable from "../../Components/Logs_Table/index"
 import IError from '../../@types/error'
 
+import loadingAnimation from "../../images/icons/loadingAnimation.svg"
+
+
+
 const Logs: React.FC = () => {
 
     const { logs, setLogs } = useLogs()
@@ -60,15 +64,16 @@ const Logs: React.FC = () => {
         (
             async () => {
                 try {
-
+                    setLoading(true)
                     logsCount.current = await axios.get<number>(`${process.env.REACT_APP_API_ENDPOINT}/api/logs/count`)
                     // console.log(logsCount.current.data)
-
+                    setLoading(false)
                     if (logs?.length === 0) {
                         setLoading(true)
                         handleLogsRequest()
                     }
                 } catch {
+                    setLoading(false)
                     setError({
                         display: true,
                         errorMessage: "Error Connecting To DataBase"
@@ -99,7 +104,8 @@ const Logs: React.FC = () => {
 
     return (
         <div className="logs-wraper">
-            {loading && <h1>Loading...</h1>}
+            {/* {loading && <h1>Loading...</h1>} */}
+            {loading && <img src={loadingAnimation} />}
             {!loading && !error.display && logs?.length === 0 && <h1>No Data Found</h1>}
             {!loading && error.display && <h1>{error.errorMessage}</h1>}
             {!loading && logs?.length !== 0 &&
