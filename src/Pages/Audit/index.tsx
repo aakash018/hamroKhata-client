@@ -64,7 +64,7 @@ const Audit: React.FC = () => {
             <div className="audit-wraper">
                 <div className="audit-container">
                     {/* {loading && <h1>Loading...</h1>} */}
-                    {loading && <img src={loadingAnimation} style={LoadingStyle} />}
+                    {loading && <img src={loadingAnimation} style={LoadingStyle} alt="loading" />}
                     {error?.display && !loading && <h1 style={LoadingStyle} >{error.errorMessage}</h1>}
                     {audits && !error?.display && Object.keys(audits).map((name, i) => (
                         <AuditCard
