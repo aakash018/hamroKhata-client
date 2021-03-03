@@ -1,6 +1,6 @@
 {
-  "short_name": "Khata",
-  "name": "Hamrokhata",
+  "short_name": "HamroKhata",
+  "name": "Hamro Khata v2",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,32 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#2F2D2D",
+  "background_color": "#ffffff",
+  "shortcuts": [
+    {
+      "name": "Autit Tab",
+      "short_name": "Audit",
+      "description": "View audits",
+      "url": "/audit",
+      "icons": [
+        {
+          "src": "/icons/audit.svg",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Logs Tab",
+      "short_name": "Logs",
+      "description": "View Logs",
+      "url": "/logs",
+      "icons": [
+        {
+          "src": "/icons/logs.svg",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
 }
