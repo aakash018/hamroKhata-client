@@ -108,7 +108,7 @@ const Logs: React.FC = () => {
             {loading && logs?.length === 0 && <img src={loadingAnimation} alt="loading" />}
             {!loading && !error.display && logs?.length === 0 && <h1>No Data Found</h1>}
             {!loading && error.display && <h1>{error.errorMessage}</h1>}
-            {!loading && logs?.length !== 0 &&
+            {!loading && logs?.length !== 0 && !error.display &&
                 <div className="logs-container" ref={logs_container}>
                     {logs && (logs as ILogs[]).map((log, i) => (
                         <LogsTable

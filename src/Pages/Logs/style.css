@@ -1,5 +1,5 @@
 .logs-wraper {
-  width: 98.7vw;
+  width: 100vw;
   min-height: 89vh;
 
   display: flex;
@@ -27,3 +27,4 @@
 .logs-container::-webkit-scrollbar {
   display: none;
 }
+

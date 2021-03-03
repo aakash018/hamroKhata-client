@@ -18,9 +18,12 @@
   user-select: none;
 }
 
+.table-row .paid-by{
+  justify-self: start;
+}
+
 .table-row .amount {
   min-width: 100px;
-  /* background-color: burlywood; */
 
   display: flex;
   justify-content: center;

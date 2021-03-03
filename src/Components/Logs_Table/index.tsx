@@ -9,7 +9,7 @@ interface Props {
     dark: boolean
 }
 
-const LogsTable:React.FC<Props> = ({amount, description, paid_By, paid_at, dark}) => {
+const LogsTable: React.FC<Props> = ({ amount, description, paid_By, paid_at, dark }) => {
 
     const [showDesc, setShowDesc] = useState<boolean>(false)
 
@@ -19,8 +19,8 @@ const LogsTable:React.FC<Props> = ({amount, description, paid_By, paid_at, dark}
 
     return (
         <>
-            <div className={`table-row ${dark? "dark" : ""}`} onClick={handleToggleDesc}>
-                <section className={`triangle-arrow ${showDesc? "opened" : ""}`} ></section>
+            <div className={`table-row ${dark ? "dark" : ""}`} onClick={handleToggleDesc}>
+                <section className={`triangle-arrow ${showDesc ? "opened" : ""}`} ></section>
                 <section className="paid-by">
                     {paid_By}
                 </section>
@@ -31,12 +31,12 @@ const LogsTable:React.FC<Props> = ({amount, description, paid_By, paid_at, dark}
                     {paid_at}
                 </section>
                 <section className="delete-icon">
-                <span className="material-icons">
-                            delete_forever
+                    <span className="material-icons">
+                        delete_forever
                 </span>
                 </section>
             </div>
-            <Desc text={description} show={showDesc}/>
+            <Desc text={description} show={showDesc} />
         </>
     )
 }
