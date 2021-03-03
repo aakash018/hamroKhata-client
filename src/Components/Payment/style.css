@@ -119,15 +119,19 @@
     top: 10px;
   }
 
-  #payment-container form {
+  #payment-container form{
     top: 50%;
     transform: translateY(-60%);
+    left: -130px;
+
+
   }
 
 
   .payment-amount-container label{
-    margin-left: 150px;
-    margin-right: 35px;
+    margin-left: 105px;
+    margin-right: -10px;
+
   }
 
   .from-payment-input-to{
@@ -143,13 +147,16 @@
 
     margin-top: -40px;
   }
+  #payment-container form {
+    left: -150px;
+  }
 
   .payment-submit-button{
     left: 43%;
   }
 
   .payment-amount-container label{
-    margin-left: 170px;
+    margin-left: 105px;
   }
 
   .payment-amount-container input{
