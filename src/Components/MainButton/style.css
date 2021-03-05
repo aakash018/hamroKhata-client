@@ -6,8 +6,8 @@
     background: var(--theme-font-color);
     color: white;
   
-    position: absolute;
-    left: 20%;
+    /* position: absolute; */
+    /* left: 20%; */
 }
 
 .main-button:disabled{

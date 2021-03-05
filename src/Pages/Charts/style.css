@@ -1,0 +1,19 @@
+#charts {
+    display: flex;
+    width: 100vw;
+
+    justify-content: space-around;
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+
+.chartSelection{
+    height: 150px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}

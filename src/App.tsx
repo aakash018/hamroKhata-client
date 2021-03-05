@@ -10,6 +10,7 @@ import Logs from "./Pages/Logs/index"
 import Audit from "./Pages/Audit/index";
 import LogsProvider from "./Context/Logs";
 import Footer from "./Components/Mobile_Footer";
+import Charts from "./Pages/Charts";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route component={Payment} path="/payment" exact />
             <Route component={Logs} path="/logs" exact />
             <Route component={Audit} path="/audit" exact />
+            <Route component={Charts} path="/charts" exact />
           </LogsProvider>
         </Switch>
         <Footer />

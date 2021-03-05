@@ -40,9 +40,9 @@ const selectedNameStyle: React.CSSProperties = {
 
 const submitButtonStyle: React.CSSProperties = {
     position: "absolute",
-    bottom: "45px",
-    left: "40%",
-    // transform: "translate(-200%)"
+    bottom: "10px",
+    left: "50%",
+    transform: "translate(-50%)"
 
 }
 

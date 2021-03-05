@@ -19,12 +19,23 @@
   border: 1px solid black;
   position: relative;
 
-  cursor: pointer;
-
   /* background-color: brown; */
   overflow-y: scroll;
 }
 .logs-container::-webkit-scrollbar {
   display: none;
+}
+
+.entry-delete-modal{
+  position: relative;
+}
+
+.entry-delete-modal-button{
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
 }
 

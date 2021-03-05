@@ -37,6 +37,14 @@
   transform: translateY(-50%);
 }
 
+.entry-submit{
+  position: absolute;
+  left: 40%;
+  bottom: -40px;
+
+  transform: translateX(-40%);
+}
+
 
 #amount,
 #person-select,
@@ -90,9 +98,7 @@
   }
 
   .entry-submit{
-    position: absolute;
-    bottom: 10px;
-    left: 20%;
+    bottom: -25px;
   }
 
   .freeze-audit-button{
