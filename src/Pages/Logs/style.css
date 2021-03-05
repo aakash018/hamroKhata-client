@@ -39,3 +39,9 @@
 
 }
 
+@media screen and (max-width: 650px){
+  .entry-delete-modal-button{
+  bottom: -30px;
+  }
+}
+

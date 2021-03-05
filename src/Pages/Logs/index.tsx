@@ -193,7 +193,7 @@ const Logs: React.FC = () => {
             >
                 <div className="entry-delete-modal">
                     <ErrorContainer display={error.display} errorMessage={error.errorMessage} />
-                    <h1 style={{ marginBottom: "20px" }}>This will delete every logs and entries made after it. Want To delete?</h1>
+                    <h1 style={{ margin: "10px", }}>This will delete every logs and entries made after it. Want To delete?</h1>
                     <div className="entry-delete-modal-button">
                         <MainButton onclick={handelDelete}>Delete</MainButton>
                     </div>
