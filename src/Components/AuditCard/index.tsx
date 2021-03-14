@@ -7,11 +7,11 @@ interface Props {
     profile_pic: string
 }
 
-const index:React.FC<Props> = ({names, amounts, profile_pic}) => {
+const index: React.FC<Props> = ({ names, amounts, profile_pic }) => {
     return (
         <div className="audit-card-container">
             <section className="audit-profile-picture">
-                <img src={profile_pic} alt={"profile_pic"}/>
+                <img src={profile_pic} alt={"profile_pic"} />
             </section>
             <section className="audit-data-container">
                 <div className="audit-data">
@@ -19,15 +19,15 @@ const index:React.FC<Props> = ({names, amounts, profile_pic}) => {
                         {names[0]}
                     </section>
                     <section className="audit-data-amount">
-                        {amounts[0]}
+                        {amounts[0].toFixed(2)}
                     </section>
                 </div>
                 <div className="audit-data">
                     <section className="audit-data-name" >
-                        {names[1]}     
+                        {names[1]}
                     </section>
                     <section className="audit-data-amount">
-                        {amounts[1]}
+                        {amounts[1].toFixed(2)}
                     </section>
                 </div>
                 <div className="audit-data">
@@ -35,7 +35,7 @@ const index:React.FC<Props> = ({names, amounts, profile_pic}) => {
                         {names[2]}
                     </section>
                     <section className="audit-data-amount">
-                        {amounts[2]}
+                        {amounts[2].toFixed(2)}
                     </section>
                 </div>
             </section>
