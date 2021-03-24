@@ -137,7 +137,7 @@ const Entry: React.FC<Props> = ({ setShowAudied, setShowFreezeModal, frozenRoomi
                             <option>Aakash</option>
                             <option>Deekshit</option>
                             <option>Subash</option>
-                            <option>Yaman</option>
+                            <option>Rohan</option>
                         </select>
                     </section>
                     <section>

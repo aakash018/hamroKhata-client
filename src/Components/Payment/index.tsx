@@ -73,7 +73,7 @@ const Payment: React.FC<Props> = ({ setShowAudied }) => {
         setSelectedForTo(e.target.value)
     }
 
-    const names = useRef(["Aakash", "Deekshit", "Subash", "Yaman"])
+    const names = useRef(["Aakash", "Deekshit", "Subash", "Rohan"])
 
     return (
         <div className="payment-wraper">

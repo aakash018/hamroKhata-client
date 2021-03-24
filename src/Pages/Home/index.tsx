@@ -12,7 +12,7 @@ const Home: React.FC = () => {
     const [showFreezeModal, setShowFreezeModal] = useState<boolean>(false)
     const [frozenRoomiesList, setFrozenRoomiesList] = useState<string[]>([])
 
-    const [names, setNames] = useState(["Aakash", "Deekshit", "Subash", "Yaman"])
+    const [names, setNames] = useState(["Aakash", "Deekshit", "Subash", "Rohan"])
 
     return (
         <>
